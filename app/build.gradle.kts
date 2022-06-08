@@ -32,7 +32,23 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
+
+  flavorDimensions.add("mode")
+
+  productFlavors {
+    create("dev") {
+      dimension = "mode"
+      buildConfigField("String", Config.baseUrlLabel, "\"${Config.devApiUrl}\"")
+    }
+
+    create("prod") {
+      dimension = "mode"
+      buildConfigField("String", Config.baseUrlLabel, "\"${Config.prodApiUrl}\"")
+    }
+  }
+
   compileOptions {
+    isCoreLibraryDesugaringEnabled = true
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
   }
