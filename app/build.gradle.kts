@@ -1,6 +1,9 @@
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
+  id("kotlin-android")
+  id("kotlin-kapt")
+  id("kotlin-parcelize")
 }
 
 android {
@@ -66,6 +69,10 @@ dependencies {
 
   for (library in Dependency.MODULE_UI_IMPL_DEPS) {
     implementation(library)
+  }
+
+  for (library in Dependency.MODULE_UI_KAPT_DEPS) {
+    kapt(library)
   }
 
   for (library in Dependency.MODULE_UI_ANDROID_TEST_DEPS) {

@@ -13,6 +13,7 @@ object Dependency {
     const val retrofit = "2.9.0"
     const val moshi = "1.9.3"
     const val timber = "4.7.1"
+    const val dagger = "2.42"
 
     const val junit = "4.13.2"
     const val junitExt = "1.1.3"
@@ -20,10 +21,10 @@ object Dependency {
     const val truth = "1.0.1"
   }
 
+
   object Desugaring {
     const val coreLibraryDesugaring = "com.android.tools:desugar_jdk_libs:${LibVersions.coreLibraryDesugaring}"
   }
-
 
   object Library {
     const val appcompat = "androidx.appcompat:appcompat:${LibVersions.appcompat}"
@@ -39,8 +40,9 @@ object Dependency {
     const val moshi = "com.squareup.moshi:moshi:${LibVersions.moshi}"
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${LibVersions.moshi}"
     const val timber = "com.jakewharton.timber:timber:${LibVersions.timber}"
+    const val daggerHiltAndroid = "com.google.dagger:hilt-android:${LibVersions.dagger}"
+    const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${LibVersions.dagger}"
   }
-
 
   object TestLibrary {
     const val junit = "junit:junit:${LibVersions.junit}"
@@ -60,7 +62,12 @@ object Dependency {
     Library.retrofit,
     Library.moshi,
     Library.moshiKotlin,
-    Library.timber
+    Library.timber,
+    Library.daggerHiltAndroid
+  )
+
+  val MODULE_UI_KAPT_DEPS = listOf(
+    Library.daggerHiltAndroidCompiler
   )
 
   val MODULE_CACHE_IMPL_DEPS = listOf(
