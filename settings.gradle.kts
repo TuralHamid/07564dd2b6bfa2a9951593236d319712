@@ -16,3 +16,7 @@ dependencyResolutionManagement {
 rootProject.buildFileName = "build.gradle.kts"
 rootProject.name = "07564dd2b6bfa2a9951593236d319712"
 include(":app")
+include(":cache")
+include(":network")
+include(":data")
+include(":domain")

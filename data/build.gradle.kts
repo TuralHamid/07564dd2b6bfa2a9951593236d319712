@@ -1,5 +1,5 @@
 plugins {
-  id("com.android.application")
+  id("com.android.library")
   id("org.jetbrains.kotlin.android")
 }
 
@@ -7,28 +7,19 @@ android {
   compileSdk = 32
 
   defaultConfig {
-    applicationId = "com.space.challenge"
     minSdk = 21
     targetSdk = 32
-    versionCode = 1
-    versionName = "1.0.0"
     multiDexEnabled = true
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles("consumer-rules.pro")
   }
 
   buildTypes {
     debug {
-      applicationIdSuffix = ".debug"
-      resValue("string", Config.appNameLabel, Config.appNameDev)
-      isDebuggable = true
       isMinifyEnabled = false
       isShrinkResources = false
     }
     release {
-      applicationIdSuffix = ".prod"
-      resValue("string", Config.appNameLabel, Config.appName)
-      isMinifyEnabled = true
-      isShrinkResources = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
@@ -42,9 +33,8 @@ android {
 }
 
 dependencies {
-  implementation(project(":data"))
-  implementation(project(":cache"))
-  implementation(project(":network"))
+
+  api(project(":domain"))
 
   implementation("androidx.core:core-ktx:1.7.0")
   implementation("androidx.appcompat:appcompat:1.4.2")
