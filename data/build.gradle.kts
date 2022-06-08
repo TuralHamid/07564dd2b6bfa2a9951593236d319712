@@ -48,3 +48,7 @@ dependencies {
     testImplementation(library)
   }
 }
+
+kapt {
+  correctErrorTypes = true
+}

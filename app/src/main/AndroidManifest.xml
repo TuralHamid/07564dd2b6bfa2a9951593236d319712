@@ -4,6 +4,7 @@
   package="com.space.challenge">
 
   <application
+    android:name=".SpaceApplication"
     android:allowBackup="true"
     android:hardwareAccelerated="true"
     android:icon="@drawable/app_icon"
