@@ -14,6 +14,7 @@ object Dependency {
     const val moshi = "1.9.3"
     const val timber = "4.7.1"
     const val dagger = "2.42"
+    const val navigation = "2.3.5"
 
     const val junit = "4.13.2"
     const val junitExt = "1.1.3"
@@ -42,6 +43,8 @@ object Dependency {
     const val timber = "com.jakewharton.timber:timber:${LibVersions.timber}"
     const val daggerHiltAndroid = "com.google.dagger:hilt-android:${LibVersions.dagger}"
     const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${LibVersions.dagger}"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${LibVersions.navigation}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${LibVersions.navigation}"
   }
 
   object TestLibrary {
@@ -63,7 +66,9 @@ object Dependency {
     Library.moshi,
     Library.moshiKotlin,
     Library.timber,
-    Library.daggerHiltAndroid
+    Library.daggerHiltAndroid,
+    Library.navigationFragment,
+    Library.navigationUi
   )
 
   val MODULE_UI_KAPT_DEPS = listOf(
