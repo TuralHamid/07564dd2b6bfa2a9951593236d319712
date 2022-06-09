@@ -1,3 +1,20 @@
 <resources>
-  <string name="app_name">07564dd2b6bfa2a9951593236d319712</string>
+  <string name="main_tv_points_text">Dağıtılacak Puan :</string>
+  <string name="main_tv_durability_text">Dayanıklılık</string>
+  <string name="main_tv_speed_text">Hız</string>
+  <string name="main_tv_capacity_text">Kapasite</string>
+  <string name="main_btn_continue_text">Devam Et</string>
+  <string name="main_durability_not_valid_error_toast_text">Dayanıklılık 1\'den az olamaz</string>
+  <string name="main_speed_not_valid_error_toast_text">Hız 1\'den az olamaz</string>
+  <string name="main_capacity_not_valid_error_toast_text">Kapasite 1\'den az olamaz</string>
+
+  <string name="stations_bnv_title_text">İstasyon</string>
+  <string name="stations_tv_ugs_text">UGS</string>
+  <string name="stations_tv_eus_text">EUS</string>
+  <string name="stations_tv_ds_text">DS</string>
+  <string name="stations_edt_search_hint">Search</string>
+  <string name="stations_btn_travel_text">Travel</string>
+
+  <string name="favorites_bnv_title_text">Favoriler</string>
+  <string name="favorites_tv_page_title_text">Favoriler</string>
 </resources>

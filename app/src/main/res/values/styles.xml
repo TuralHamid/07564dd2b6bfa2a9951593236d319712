@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- =========== -->
+  <!-- Text styles -->
+  <!-- =========== -->
+  <style name="TextAppearance.App.Small" parent="TextAppearance.AppCompat.Small">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="TextAppearance.App.Medium" parent="TextAppearance.AppCompat.Medium">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="TextAppearance.App.Large" parent="TextAppearance.AppCompat.Large">
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="TextAppearance.App.XLarge" parent="TextAppearance.AppCompat.Large">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="TextAppearance.App.XXLarge" parent="TextAppearance.AppCompat.Large">
+    <item name="android:textSize">26sp</item>
+  </style>
+
+  <!--    Regular-->
+  <style name="TextAppearance.App.Small.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="TextAppearance.App.Medium.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="TextAppearance.App.Large.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="TextAppearance.App.XLarge.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="TextAppearance.App.XXLarge.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <!--    Bold-->
+  <style name="TextAppearance.App.Small.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextAppearance.App.Medium.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextAppearance.App.Large.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextAppearance.App.XLarge.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextAppearance.App.XXLarge.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+</resources>
