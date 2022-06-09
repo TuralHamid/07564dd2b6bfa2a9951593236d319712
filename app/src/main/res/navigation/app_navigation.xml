@@ -5,35 +5,18 @@
   android:id="@+id/app_navigation"
   app:startDestination="@id/mainFragment">
 
+  <include app:graph="@navigation/bnv_navigation" />
+
+
   <fragment
     android:id="@+id/mainFragment"
     android:name="com.space.challenge.view.main.MainFragment"
-    android:label="fragment_note_list"
+    android:label="fragment_main"
     tools:layout="@layout/fragment_main">
 
     <action
-      android:id="@+id/act_btnContinue_to_stationsFragment"
-      app:destination="@id/stationsFragment"
-      app:enterAnim="@anim/slide_in_right"
-      app:exitAnim="@anim/slide_out_left"
-      app:popEnterAnim="@anim/slide_in_left"
-      app:popExitAnim="@anim/slide_out_right" />
-
-  </fragment>
-
-  <fragment
-    android:id="@+id/stationsFragment"
-    android:name="com.space.challenge.view.stations.StationsFragment"
-    android:label="fragment_note_display"
-    tools:layout="@layout/fragment_stations">
-
-  </fragment>
-
-  <fragment
-    android:id="@+id/favoritesFragment"
-    android:name="com.space.challenge.view.favorites.FavoritesFragment"
-    android:label="fragment_note_edit"
-    tools:layout="@layout/fragment_favorites">
+      android:id="@+id/act_btnContinue_to_bnvNavigation"
+      app:destination="@id/bnv_navigation" />
 
   </fragment>
 

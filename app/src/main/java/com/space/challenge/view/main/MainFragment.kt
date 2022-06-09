@@ -33,7 +33,7 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     binding?.btnContinue?.setOnClickListener {
       if (isPointsValid()) {
         navController.navigate(
-          R.id.act_btnContinue_to_stationsFragment
+          R.id.act_btnContinue_to_bnvNavigation
         )
       }
     }
@@ -102,6 +102,10 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
 
   override fun destroyViewBinding() {
     binding = null
+  }
+
+  override fun showBnv(): Boolean {
+    return false
   }
 
   companion object {

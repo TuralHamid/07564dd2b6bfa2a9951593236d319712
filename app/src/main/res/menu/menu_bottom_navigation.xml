@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/menu_stations"
+    android:icon="@drawable/ic_stations"
+    android:title="@string/stations_bnv_title_text" />
+  <item
+    android:id="@+id/menu_favorites"
+    android:icon="@drawable/ic_favorites"
+    android:title="@string/favorites_bnv_title_text" />
+</menu>

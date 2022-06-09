@@ -27,7 +27,14 @@ abstract class BaseFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     navController = Navigation.findNavController(view)
+    navController.addOnDestinationChangedListener { controller, destination, arguments ->
+      when (showBnv()) {
+        true -> getMainActivity()?.showBottomNav()
+        false -> getMainActivity()?.hideBottomNav()
+      }
+    }
   }
+
 
   override fun onDestroyView() {
     super.onDestroyView()
@@ -38,11 +45,13 @@ abstract class BaseFragment : Fragment() {
 
   abstract fun destroyViewBinding()
 
-  protected fun getBaseActivity(): BaseActivity {
-    return activity as BaseActivity
+  abstract fun showBnv(): Boolean
+
+  protected fun getBaseActivity(): BaseActivity? {
+    return activity as BaseActivity?
   }
 
-  fun getMainActivity(): MainActivity {
-    return activity as MainActivity
+  fun getMainActivity(): MainActivity? {
+    return activity as MainActivity?
   }
 }

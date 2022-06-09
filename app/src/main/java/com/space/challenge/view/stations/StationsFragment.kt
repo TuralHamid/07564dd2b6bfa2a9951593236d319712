@@ -21,4 +21,8 @@ class StationsFragment : BaseFragment() {
   override fun destroyViewBinding() {
     binding = null
   }
+
+  override fun showBnv(): Boolean {
+    return true
+  }
 }
