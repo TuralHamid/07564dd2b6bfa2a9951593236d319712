@@ -35,7 +35,6 @@ abstract class BaseFragment : Fragment() {
     }
   }
 
-
   override fun onDestroyView() {
     super.onDestroyView()
     destroyViewBinding()

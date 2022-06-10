@@ -1,11 +1,37 @@
 package com.space.challenge.view
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.space.challenge.R
 import com.space.challenge.databinding.ActivityMainBinding
+
 
 class MainActivity : BaseActivity() {
   private var binding: ActivityMainBinding? = null
+  lateinit var navController: NavController
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setupNavigation()
+  }
+
+  private fun setupNavigation() {
+    navController = findNavController(R.id.nav_host_fragment)
+    binding?.bnv?.setupWithNavController(navController)
+
+  }
+
+  private fun listenToBnvSelected() {
+    binding?.bnv?.setOnItemSelectedListener { item ->
+      Toast.makeText(this, "selected", Toast.LENGTH_SHORT).show()
+      true
+    }
+  }
 
   fun showBottomNav() {
     binding?.bnv?.visibility = View.VISIBLE
@@ -25,5 +51,4 @@ class MainActivity : BaseActivity() {
   override fun destroyViewBinding() {
     binding = null
   }
-
 }

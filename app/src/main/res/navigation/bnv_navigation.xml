@@ -9,15 +9,6 @@
     android:name="com.space.challenge.view.stations.StationsFragment"
     android:label="fragment_stations"
     tools:layout="@layout/fragment_stations">
-
-    <!--    <action-->
-    <!--      android:id="@+id/act_btnContinue_to_bnvNavigation"-->
-    <!--      app:destination="@id/bnv_navigation"-->
-    <!--      app:enterAnim="@anim/slide_in_right"-->
-    <!--      app:exitAnim="@anim/slide_out_left"-->
-    <!--      app:popEnterAnim="@anim/slide_in_left"-->
-    <!--      app:popExitAnim="@anim/slide_out_right" />-->
-
   </fragment>
 
   <fragment
@@ -25,7 +16,6 @@
     android:name="com.space.challenge.view.favorites.FavoritesFragment"
     android:label="fragment_favorites"
     tools:layout="@layout/fragment_favorites">
-
   </fragment>
 
 </navigation>
