@@ -9,37 +9,33 @@
   android:clipToPadding="false"
   android:padding="20dp">
 
-  <LinearLayout
-    android:id="@+id/ln_points"
-    android:layout_width="match_parent"
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_points_title"
+    style="@style/TextAppearance.App.XXLarge.Bold"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
-    app:layout_constraintEnd_toEndOf="parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:text="@string/main_tv_points_text"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_points_value"
+    app:layout_constraintHorizontal_chainStyle="spread"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-      android:id="@+id/tv_points_title"
-      style="@style/TextAppearance.App.XXLarge.Bold"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:padding="16dp"
-      android:text="@string/main_tv_points_text"
-      android:textColor="@color/black" />
-
-    <com.google.android.material.textview.MaterialTextView
-      android:id="@+id/tv_points_value"
-      style="@style/TextAppearance.App.XLarge.Bold"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="10dp"
-      android:background="@drawable/bg_point_value"
-      android:padding="16dp"
-      android:textColor="@color/black"
-      tools:text="15" />
-
-  </LinearLayout>
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_points_value"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_point_value"
+    android:padding="16dp"
+    android:textColor="@color/black"
+    app:layout_constraintBottom_toBottomOf="@+id/tv_points_title"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/tv_points_title"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="15" />
 
   <com.google.android.material.textfield.TextInputEditText
     android:id="@+id/edt_name"
@@ -59,7 +55,7 @@
     android:textColorHint="@color/gray"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/ln_points" />
+    app:layout_constraintTop_toBottomOf="@+id/tv_points_title" />
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv_durability_title"

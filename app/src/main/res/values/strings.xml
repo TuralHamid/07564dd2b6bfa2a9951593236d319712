@@ -11,9 +11,9 @@
   <string name="main_capacity_not_valid_error_toast_text">Kapasite 1\'den az olamaz</string>
 
   <string name="stations_bnv_title_text">İstasyon</string>
-  <string name="stations_tv_ugs_text">UGS</string>
-  <string name="stations_tv_eus_text">EUS</string>
-  <string name="stations_tv_ds_text">DS</string>
+  <string name="stations_tv_ugs_text">UGS :</string>
+  <string name="stations_tv_eus_text">EUS :</string>
+  <string name="stations_tv_ds_text">DS :</string>
   <string name="stations_edt_search_hint">Search</string>
   <string name="stations_btn_travel_text">Travel</string>
 

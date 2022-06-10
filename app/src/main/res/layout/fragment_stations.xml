@@ -1,18 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/white">
+  android:background="@color/white"
+  android:padding="20dp">
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_ugs_title"
+    style="@style/TextAppearance.App.XLarge.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Stations"
+    android:padding="4dp"
+    android:text="@string/stations_tv_ugs_text"
     android:textColor="@color/black"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/tv_ugs_value"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_ugs_value"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_eus_title"
+    app:layout_constraintStart_toEndOf="@+id/tv_ugs_title"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="5000" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_eus_title"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:text="@string/stations_tv_eus_text"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_eus_value"
+    app:layout_constraintStart_toEndOf="@+id/tv_ugs_value"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_eus_value"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_ds_title"
+    app:layout_constraintStart_toEndOf="@+id/tv_eus_title"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="500" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_ds_title"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:text="@string/stations_tv_ds_text"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_ds_value"
+    app:layout_constraintStart_toEndOf="@+id/tv_eus_value"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_ds_value"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/tv_ds_title"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="50000" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_name"
+    style="@style/TextAppearance.App.XXLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:textColor="@color/black"
+    app:layout_constraintBottom_toBottomOf="@+id/tv_points"
+    app:layout_constraintEnd_toStartOf="@+id/tv_points"
+    app:layout_constraintHorizontal_chainStyle="spread_inside"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_ugs_title"
+    app:layout_constraintTop_toTopOf="@+id/tv_points"
+    tools:text="Name" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_points"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/bg_point_value"
+    android:padding="10dp"
+    android:textColor="@color/black"
+    app:layout_constraintEnd_toStartOf="@+id/tv_time"
+    app:layout_constraintStart_toEndOf="@+id/tv_name"
+    app:layout_constraintTop_toBottomOf="@+id/tv_ugs_title"
+    tools:text="100" />
+
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_time"
+    style="@style/TextAppearance.App.XLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_point_value"
+    android:padding="10dp"
+    android:textColor="@color/black"
+    app:layout_constraintBottom_toBottomOf="@+id/tv_points"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/tv_points"
+    app:layout_constraintTop_toBottomOf="@+id/tv_ugs_title"
+    app:layout_constraintTop_toTopOf="@+id/tv_points"
+    tools:text="49s" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
