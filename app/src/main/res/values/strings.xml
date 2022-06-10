@@ -1,9 +1,11 @@
 <resources>
   <string name="main_tv_points_text">Dağıtılacak Puan :</string>
+  <string name="main_edt_name_hint">Uzay aracı ismi giriniz</string>
   <string name="main_tv_durability_text">Dayanıklılık</string>
   <string name="main_tv_speed_text">Hız</string>
   <string name="main_tv_capacity_text">Kapasite</string>
   <string name="main_btn_continue_text">Devam Et</string>
+  <string name="main_name_not_valid_error_toast_text">Uzay aracı ismi giriniz</string>
   <string name="main_durability_not_valid_error_toast_text">Dayanıklılık 1\'den az olamaz</string>
   <string name="main_speed_not_valid_error_toast_text">Hız 1\'den az olamaz</string>
   <string name="main_capacity_not_valid_error_toast_text">Kapasite 1\'den az olamaz</string>

@@ -3,7 +3,6 @@ package com.space.challenge.view
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,14 +22,6 @@ class MainActivity : BaseActivity() {
   private fun setupNavigation() {
     navController = findNavController(R.id.nav_host_fragment)
     binding?.bnv?.setupWithNavController(navController)
-
-  }
-
-  private fun listenToBnvSelected() {
-    binding?.bnv?.setOnItemSelectedListener { item ->
-      Toast.makeText(this, "selected", Toast.LENGTH_SHORT).show()
-      true
-    }
   }
 
   fun showBottomNav() {

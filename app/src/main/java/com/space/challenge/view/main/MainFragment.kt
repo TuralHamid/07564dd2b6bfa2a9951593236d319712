@@ -1,6 +1,8 @@
 package com.space.challenge.view.main
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import com.space.challenge.view.BaseFragment
 
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
+  private var name: String? = null
   private var durability: Int = 0
   private var speed: Int = 0
   private var capacity: Int = 0
@@ -31,7 +34,7 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
 
   private fun setListeners() {
     binding?.btnContinue?.setOnClickListener {
-      if (isPointsValid()) {
+      if (isInputValid()) {
         navController.navigate(
           R.id.act_btnContinue_to_bnvNavigation
         )
@@ -41,9 +44,31 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     binding?.skbDurability?.setOnSeekBarChangeListener(this)
     binding?.skbSpeed?.setOnSeekBarChangeListener(this)
     binding?.skbCapacity?.setOnSeekBarChangeListener(this)
+
+    binding?.edtName?.addTextChangedListener(object : TextWatcher {
+
+      override fun afterTextChanged(s: Editable) {}
+
+      override fun beforeTextChanged(
+        s: CharSequence, start: Int,
+        count: Int, after: Int
+      ) {
+      }
+
+      override fun onTextChanged(
+        s: CharSequence, start: Int,
+        before: Int, count: Int
+      ) {
+        name = s.toString()
+      }
+    })
   }
 
-  private fun isPointsValid(): Boolean {
+  private fun isInputValid(): Boolean {
+    if (name.isNullOrEmpty()) {
+      Toast.makeText(context, R.string.main_name_not_valid_error_toast_text, Toast.LENGTH_SHORT).show()
+      return false
+    }
     if (durability < 1) {
       Toast.makeText(context, R.string.main_durability_not_valid_error_toast_text, Toast.LENGTH_SHORT).show()
       return false
