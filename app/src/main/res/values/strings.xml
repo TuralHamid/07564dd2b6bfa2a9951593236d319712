@@ -16,6 +16,13 @@
   <string name="stations_tv_ds_text">DS :</string>
   <string name="stations_edt_search_hint">Search</string>
   <string name="stations_btn_travel_text">Travel</string>
+  <string name="stations_tv_item_station_coordinate_x_text">Kordinat X: %s</string>
+  <string name="stations_tv_item_station_coordinate_y_text">Kordinat Y: %s</string>
+  <string name="stations_tv_item_station_capacity_text">Kapasite: %s</string>
+  <string name="stations_tv_item_station_stock_text">Mevcut: %s</string>
+  <string name="stations_tv_item_station_need_text">Gereken: %s</string>
+  <string name="stations_tv_initial_station_text">Dünya</string>
+  <string name="stations_tv_empty_stations_text">Bu kriterde istasyon mevcut değil</string>
 
   <string name="favorites_bnv_title_text">Favoriler</string>
   <string name="favorites_tv_page_title_text">Favoriler</string>

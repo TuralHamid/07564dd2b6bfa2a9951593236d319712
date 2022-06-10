@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentMainBinding
+import com.space.challenge.model.SpaceShip
 import com.space.challenge.view.BaseFragment
+import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
 
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
@@ -36,7 +39,8 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     binding?.btnContinue?.setOnClickListener {
       if (isInputValid()) {
         navController.navigate(
-          R.id.act_btnContinue_to_bnvNavigation
+          R.id.act_btnContinue_to_bnvNavigation,
+          bundleOf(ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity))
         )
       }
     }
@@ -46,7 +50,6 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     binding?.skbCapacity?.setOnSeekBarChangeListener(this)
 
     binding?.edtName?.addTextChangedListener(object : TextWatcher {
-
       override fun afterTextChanged(s: Editable) {}
 
       override fun beforeTextChanged(

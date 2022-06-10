@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  style="@style/CardView"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginEnd="10dp"
+  android:layout_marginBottom="10dp"
+  app:cardBackgroundColor="@color/white"
+  app:cardCornerRadius="10dp"
+  app:cardElevation="8dp"
+  app:strokeColor="@color/black"
+  app:strokeWidth="1dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_coordinate_x_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/stations_tv_item_station_coordinate_x_text"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_coordinate_y_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/stations_tv_item_station_coordinate_y_text"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_x_title" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_capacity_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/stations_tv_item_station_capacity_text"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_y_title" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_stock_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/stations_tv_item_station_stock_text"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_capacity_title" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_need_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/stations_tv_item_station_need_text"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_stock_title" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/imv_fav"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_favorites_empty" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_name"
+      style="@style/TextAppearance.App.XXLarge.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_need_title"
+      tools:text="Station Name" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btn_travel"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:text="@string/stations_btn_travel_text"
+      android:textAllCaps="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
