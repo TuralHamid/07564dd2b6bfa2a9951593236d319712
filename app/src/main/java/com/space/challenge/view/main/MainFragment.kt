@@ -15,7 +15,9 @@ import com.space.challenge.databinding.FragmentMainBinding
 import com.space.challenge.model.SpaceShip
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
   private var name: String? = null

@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
   lateinit var navController: NavController

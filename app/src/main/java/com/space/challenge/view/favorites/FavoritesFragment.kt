@@ -12,7 +12,9 @@ import com.space.challenge.utils.filterFavoriteStations
 import com.space.challenge.utils.hideView
 import com.space.challenge.utils.showView
 import com.space.challenge.view.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoritesFragment : BaseFragment(), FavoritesAdapter.FavoriteStationClickListener {
   private var binding: FragmentFavoritesBinding? = null
   private lateinit var favoritesAdapter: FavoritesAdapter

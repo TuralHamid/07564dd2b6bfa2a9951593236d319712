@@ -13,7 +13,7 @@ object Dependency {
     const val retrofit = "2.9.0"
     const val moshi = "1.9.3"
     const val timber = "4.7.1"
-    const val dagger = "2.42"
+    const val dagger = "2.38.1"
     const val navigation = "2.3.5"
 
     const val junit = "4.13.2"

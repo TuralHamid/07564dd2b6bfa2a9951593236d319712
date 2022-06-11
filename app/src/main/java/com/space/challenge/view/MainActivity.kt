@@ -7,8 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.space.challenge.R
 import com.space.challenge.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
   private var binding: ActivityMainBinding? = null
   lateinit var navController: NavController

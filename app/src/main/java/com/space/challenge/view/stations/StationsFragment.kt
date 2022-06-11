@@ -18,9 +18,11 @@ import com.space.challenge.utils.filterSearchedStations
 import com.space.challenge.utils.hideView
 import com.space.challenge.utils.showView
 import com.space.challenge.view.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+@AndroidEntryPoint
 class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   private var binding: FragmentStationsBinding? = null
   private lateinit var stationsAdapter: StationsAdapter

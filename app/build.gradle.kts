@@ -1,9 +1,9 @@
 plugins {
+  kotlin("kapt")
   id("com.android.application")
   id("dagger.hilt.android.plugin")
   id("org.jetbrains.kotlin.android")
   id("kotlin-android")
-  id("kotlin-kapt")
   id("kotlin-parcelize")
 }
 
@@ -88,4 +88,8 @@ dependencies {
   for (library in Dependency.MODULE_UI_TEST_DEPS) {
     testImplementation(library)
   }
+}
+
+kapt {
+  correctErrorTypes = true
 }
