@@ -24,6 +24,10 @@
     <item name="android:textSize">26sp</item>
   </style>
 
+  <style name="TextAppearance.App.XXXLarge" parent="TextAppearance.AppCompat.Large">
+    <item name="android:textSize">32sp</item>
+  </style>
+
   <!--    Regular-->
   <style name="TextAppearance.App.Small.Regular">
     <item name="android:fontFamily">@font/sf_pro_regular</item>
@@ -50,6 +54,11 @@
     <item name="android:textStyle">normal</item>
   </style>
 
+  <style name="TextAppearance.App.XXXLarge.Regular">
+    <item name="android:fontFamily">@font/sf_pro_regular</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
   <!--    Bold-->
   <style name="TextAppearance.App.Small.Bold">
     <item name="android:fontFamily">@font/sf_pro_bold</item>
@@ -72,6 +81,11 @@
   </style>
 
   <style name="TextAppearance.App.XXLarge.Bold">
+    <item name="android:fontFamily">@font/sf_pro_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextAppearance.App.XXXLarge.Bold">
     <item name="android:fontFamily">@font/sf_pro_bold</item>
     <item name="android:textStyle">bold</item>
   </style>

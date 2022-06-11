@@ -41,4 +41,12 @@ abstract class BaseAdapter<T, V : RecyclerView.ViewHolder?>(@JvmField val contex
   override fun getItemCount(): Int {
     return itemList?.size ?: 0
   }
+
+  open fun deleteItemAndUpdate(position: Int) {
+    itemList?.let {
+      it.removeAt(position)
+      notifyItemRemoved(position)
+      notifyDataSetChanged()
+    }
+  }
 }

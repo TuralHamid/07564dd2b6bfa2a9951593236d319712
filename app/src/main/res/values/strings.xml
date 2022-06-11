@@ -26,4 +26,5 @@
 
   <string name="favorites_bnv_title_text">Favoriler</string>
   <string name="favorites_tv_page_title_text">Favoriler</string>
+  <string name="favorites_tv_empty_favorites_text">Favori istasyon bulunmamaktadır</string>
 </resources>

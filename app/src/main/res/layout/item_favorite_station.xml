@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  style="@style/CardView"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="10dp"
+  app:cardBackgroundColor="@color/white"
+  app:cardElevation="8dp"
+  app:strokeColor="@color/black"
+  app:strokeWidth="1dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_name"
+      style="@style/TextAppearance.App.XLarge.Bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toTopOf="@+id/tv_eus"
+      app:layout_constraintEnd_toStartOf="@+id/imv_fav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Station Name" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_eus"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toStartOf="@+id/imv_fav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_name"
+      tools:text="EUS" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/imv_fav"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/tv_eus"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_favorites_empty" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
