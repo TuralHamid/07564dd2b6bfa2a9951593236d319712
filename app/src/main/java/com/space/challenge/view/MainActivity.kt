@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.space.challenge.R
 import com.space.challenge.databinding.ActivityMainBinding
 
@@ -21,7 +20,20 @@ class MainActivity : BaseActivity() {
 
   private fun setupNavigation() {
     navController = findNavController(R.id.nav_host_fragment)
-    binding?.bnv?.setupWithNavController(navController)
+    binding?.bnv?.setOnItemSelectedListener { item ->
+      navController.navigate(
+        item.itemId
+      )
+      true
+    }
+  }
+
+  override fun onBackPressed() {
+    if (navController.currentDestination?.id?.equals(R.id.favoritesFragment) == true) {
+      binding?.bnv?.selectedItemId = R.id.act_favoritesFragment_to_stationsFragment
+    } else {
+      super.onBackPressed()
+    }
   }
 
   fun showBottomNav() {
