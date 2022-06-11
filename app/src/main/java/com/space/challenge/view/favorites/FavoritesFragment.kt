@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.databinding.FragmentFavoritesBinding
-import com.space.challenge.model.Station
+import com.space.challenge.domain.model.Station
 import com.space.challenge.utils.filterFavoriteStations
 import com.space.challenge.utils.hideView
 import com.space.challenge.utils.showView

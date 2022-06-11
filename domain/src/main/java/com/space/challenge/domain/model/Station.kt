@@ -1,11 +1,11 @@
-package com.space.challenge.model
+package com.space.challenge.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Station(
+data class Station(
   var name: String?,
   var coordinateX: Double?,
   var coordinateY: Double?,

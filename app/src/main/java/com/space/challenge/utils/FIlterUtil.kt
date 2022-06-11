@@ -1,6 +1,6 @@
 package com.space.challenge.utils
 
-import com.space.challenge.model.Station
+import com.space.challenge.domain.model.Station
 
 fun <T> List<T>.filterSearchedStations(searchText: String): List<T> {
   return this.filter { item ->

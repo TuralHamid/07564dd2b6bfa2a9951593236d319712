@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentMainBinding
+import com.space.challenge.domain.model.ResultState
+import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
@@ -20,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
+  private val viewModel by viewModels<MainViewModel>()
   private var name: String? = null
   private var durability: Int = 0
   private var speed: Int = 0
@@ -29,6 +33,22 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     super.onViewCreated(view, savedInstanceState)
     setListeners()
     setViewParameters()
+    setObservers()
+    viewModel.callGetStations()
+  }
+
+  private fun setObservers() {
+    viewModel.stationsState.observe(viewLifecycleOwner) {
+      when (it) {
+        is ResultState.Error -> {
+          Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
+        }
+        is ResultState.Success<List<Station?>> -> {
+          val stationResponse = it.data
+          //TODO update UI
+        }
+      }
+    }
   }
 
   private fun setViewParameters() {

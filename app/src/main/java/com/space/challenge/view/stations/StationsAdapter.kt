@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.challenge.R
 import com.space.challenge.databinding.ItemStationBinding
-import com.space.challenge.model.Station
+import com.space.challenge.domain.model.Station
 import com.space.challenge.view.BaseAdapter
 
 class StationsAdapter(

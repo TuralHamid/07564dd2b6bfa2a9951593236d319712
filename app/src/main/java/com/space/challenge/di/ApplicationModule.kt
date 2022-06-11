@@ -1,4 +1,4 @@
-package com.space.challenge.di.modules
+package com.space.challenge.di
 
 import com.space.challenge.BuildConfig
 import com.squareup.moshi.Moshi

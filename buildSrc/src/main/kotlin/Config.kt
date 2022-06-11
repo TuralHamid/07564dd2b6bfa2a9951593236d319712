@@ -13,6 +13,6 @@ object Config {
 
   const val baseUrlLabel = "API_BASE_URL"
 
-  const val devApiUrl = "https://run.mocky.io/v3/e7211664-cbb6-4357-9c9d-f12bf8bab2e2"
-  const val prodApiUrl = "https://run.mocky.io/v3/e7211664-cbb6-4357-9c9d-f12bf8bab2e2"
+  const val devApiUrl = "https://run.mocky.io/"
+  const val prodApiUrl = "https://run.mocky.io/"
 }

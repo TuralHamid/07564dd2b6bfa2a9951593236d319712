@@ -11,9 +11,13 @@ object Dependency {
     const val fragmentKtx = "1.3.6"
     const val recyclerView = "1.2.1"
     const val retrofit = "2.9.0"
+    const val retrofitCoroutinesAdapter = "0.9.2"
+    const val coroutines = "1.5.2"
+    const val okHttp = "4.9.0"
     const val moshi = "1.9.3"
     const val timber = "4.7.1"
     const val dagger = "2.38.1"
+    const val javaxInject = "1"
     const val navigation = "2.3.5"
 
     const val junit = "4.13.2"
@@ -35,14 +39,24 @@ object Dependency {
     const val coreKtx = "androidx.core:core-ktx:${LibVersions.coreKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${LibVersions.fragmentKtx}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${LibVersions.recyclerView}"
+
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibVersions.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${LibVersions.retrofit}"
-    const val retrofitAdapter = "com.squareup.retrofit2:adapter-rxjava3:${LibVersions.retrofit}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:${LibVersions.okHttp}"
+    const val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${LibVersions.okHttp}"
+    const val retrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${LibVersions.retrofitCoroutinesAdapter}"
+
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibVersions.coroutines}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibVersions.coroutines}"
+
     const val moshi = "com.squareup.moshi:moshi:${LibVersions.moshi}"
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${LibVersions.moshi}"
+
     const val timber = "com.jakewharton.timber:timber:${LibVersions.timber}"
     const val daggerHiltAndroid = "com.google.dagger:hilt-android:${LibVersions.dagger}"
     const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${LibVersions.dagger}"
+    const val javaxInject = "javax.inject:javax.inject:${LibVersions.javaxInject}"
+
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${LibVersions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${LibVersions.navigation}"
   }
@@ -63,6 +77,9 @@ object Dependency {
     Library.fragmentKtx,
     Library.recyclerView,
     Library.retrofit,
+    Library.coroutinesAndroid,
+    Library.coroutinesCore,
+    Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin,
     Library.timber,
@@ -77,25 +94,40 @@ object Dependency {
 
   val MODULE_CACHE_IMPL_DEPS = listOf(
     Library.coreKtx,
+    Library.coroutinesAndroid,
+    Library.coroutinesCore,
+    Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin,
   )
 
   val MODULE_DATA_IMPL_DEPS = listOf(
-    Library.coreKtx
+    Library.coreKtx,
+    Library.coroutinesAndroid,
+    Library.coroutinesCore,
+    Library.javaxInject,
+    Library.okHttp
   )
 
   val MODULE_DOMAIN_IMPL_DEPS = listOf(
     Library.coreKtx,
+    Library.coroutinesAndroid,
+    Library.coroutinesCore,
+    Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin
   )
 
   val MODULE_NETWORK_IMPL_DEPS = listOf(
     Library.coreKtx,
+    Library.javaxInject,
     Library.retrofit,
     Library.retrofitAdapter,
+    Library.coroutinesAndroid,
+    Library.coroutinesCore,
     Library.retrofitMoshiConverter,
+    Library.okHttp,
+    Library.okHttpLogger,
     Library.moshi,
     Library.moshiKotlin
   )

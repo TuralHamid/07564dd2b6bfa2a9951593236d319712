@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentStationsBinding
+import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
-import com.space.challenge.model.Station
 import com.space.challenge.utils.filterSearchedStations
 import com.space.challenge.utils.hideView
 import com.space.challenge.utils.showView
@@ -190,7 +190,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
 
   override fun onFavoriteClicked(station: Station?) {
     if (station?.isFavorite == true) {
-      station?.let {
+      station.let {
         stationsAdapter.getItem(station.pos)?.isFavorite = false
         stationsAdapter.notifyItemChanged(station.pos)
       }
