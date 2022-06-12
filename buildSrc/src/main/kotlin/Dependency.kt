@@ -13,6 +13,7 @@ object Dependency {
     const val retrofit = "2.9.0"
     const val retrofitCoroutinesAdapter = "0.9.2"
     const val coroutines = "1.5.2"
+    const val room = "2.4.2"
     const val okHttp = "4.9.0"
     const val moshi = "1.9.3"
     const val timber = "4.7.1"
@@ -49,11 +50,16 @@ object Dependency {
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibVersions.coroutines}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibVersions.coroutines}"
 
+    const val room = "androidx.room:room-runtime:${LibVersions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${LibVersions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${LibVersions.room}"
+
     const val moshi = "com.squareup.moshi:moshi:${LibVersions.moshi}"
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${LibVersions.moshi}"
 
     const val timber = "com.jakewharton.timber:timber:${LibVersions.timber}"
     const val daggerHiltAndroid = "com.google.dagger:hilt-android:${LibVersions.dagger}"
+    const val daggerHiltCompiler = "com.google.dagger:hilt-compiler:${LibVersions.dagger}"
     const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${LibVersions.dagger}"
     const val javaxInject = "javax.inject:javax.inject:${LibVersions.javaxInject}"
 
@@ -79,6 +85,8 @@ object Dependency {
     Library.retrofit,
     Library.coroutinesAndroid,
     Library.coroutinesCore,
+    Library.room,
+    Library.roomKtx,
     Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin,
@@ -88,14 +96,12 @@ object Dependency {
     Library.navigationUi
   )
 
-  val MODULE_UI_KAPT_DEPS = listOf(
-    Library.daggerHiltAndroidCompiler
-  )
-
   val MODULE_CACHE_IMPL_DEPS = listOf(
     Library.coreKtx,
     Library.coroutinesAndroid,
     Library.coroutinesCore,
+    Library.room,
+    Library.roomKtx,
     Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin,
@@ -105,6 +111,8 @@ object Dependency {
     Library.coreKtx,
     Library.coroutinesAndroid,
     Library.coroutinesCore,
+    Library.room,
+    Library.roomKtx,
     Library.javaxInject,
     Library.okHttp
   )
@@ -113,6 +121,8 @@ object Dependency {
     Library.coreKtx,
     Library.coroutinesAndroid,
     Library.coroutinesCore,
+    Library.room,
+    Library.roomKtx,
     Library.javaxInject,
     Library.moshi,
     Library.moshiKotlin
@@ -123,6 +133,8 @@ object Dependency {
     Library.javaxInject,
     Library.retrofit,
     Library.retrofitAdapter,
+    Library.room,
+    Library.roomKtx,
     Library.coroutinesAndroid,
     Library.coroutinesCore,
     Library.retrofitMoshiConverter,
@@ -132,6 +144,11 @@ object Dependency {
     Library.moshiKotlin
   )
 
+  val MODULE_UI_KAPT_DEPS = listOf(
+    Library.daggerHiltCompiler,
+    Library.daggerHiltAndroidCompiler,
+    Library.roomCompiler
+  )
 
   val MODULE_UI_ANDROID_TEST_DEPS = listOf(
     TestLibrary.junit,

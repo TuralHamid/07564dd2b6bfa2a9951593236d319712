@@ -1,16 +1,13 @@
-package com.space.challenge.domain.repository
+package com.space.challenge.data.cache
 
 import com.space.challenge.domain.model.FavoriteStation
-import com.space.challenge.domain.model.Station
 
-interface StationsRepository {
-  suspend fun callGetStations(): List<Station>?
-
-  suspend fun callUpdateStation(station: Station)
-
+interface FavoritesCache {
   suspend fun callGetFavStations(): List<FavoriteStation>?
 
   suspend fun callInsertFavStation(favoriteStation: FavoriteStation)
 
   suspend fun callDeleteFavStation(favoriteStation: FavoriteStation)
+
+  suspend fun callDeleteAllFavStation(favoriteStations: List<FavoriteStation>)
 }

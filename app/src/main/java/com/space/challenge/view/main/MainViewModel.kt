@@ -3,7 +3,11 @@ package com.space.challenge.view.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.challenge.domain.interactors.StationsUseCase
+import com.space.challenge.domain.interactors.main.DeleteAllFavoritesUseCase
+import com.space.challenge.domain.interactors.main.DeleteAllStationsUseCase
+import com.space.challenge.domain.interactors.main.GetApiStationsUseCase
+import com.space.challenge.domain.interactors.main.InsertAllStationsUseCase
+import com.space.challenge.domain.model.FavoriteStation
 import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,15 +17,45 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-  private val stationsUseCase: StationsUseCase
+  private val getApiStationsUseCase: GetApiStationsUseCase,
+  private val insertAllStationsUseCase: InsertAllStationsUseCase,
+  private val deleteAllFavoritesUseCase: DeleteAllFavoritesUseCase,
+  private val deleteAllStationsUseCase: DeleteAllStationsUseCase
 ) : ViewModel() {
 
   val stationsState = MutableLiveData<ResultState<List<Station?>?>>()
+  val insertState = MutableLiveData<ResultState<Nothing>>()
+  val deleteFavState = MutableLiveData<ResultState<Nothing>>()
+  val deletStationsState = MutableLiveData<ResultState<Nothing>>()
 
   fun callGetStations() {
     viewModelScope.launch {
-      stationsUseCase.execute().collect {
+      getApiStationsUseCase.execute().collect {
         stationsState.value = it
+      }
+    }
+  }
+
+  fun callInsertAllStations(stations: List<Station>) {
+    viewModelScope.launch {
+      insertAllStationsUseCase.execute(stations).collect {
+        insertState.value = it
+      }
+    }
+  }
+
+  fun callDeleteAllFavStations(favStations: List<FavoriteStation>) {
+    viewModelScope.launch {
+      deleteAllFavoritesUseCase.execute(favStations).collect {
+        deleteFavState.value = it
+      }
+    }
+  }
+
+  fun callDeleteStations(stations: List<Station>) {
+    viewModelScope.launch {
+      deleteAllStationsUseCase.execute(stations).collect {
+        deletStationsState.value = it
       }
     }
   }

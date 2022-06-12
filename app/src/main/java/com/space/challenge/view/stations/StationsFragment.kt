@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
@@ -28,6 +29,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   private lateinit var stationsAdapter: StationsAdapter
   private lateinit var layoutManager: LinearLayoutManager
   private var currentStationList: List<Station>? = listOf()
+  private val viewModel by viewModels<StationsViewModel>()
   private var spaceShip: SpaceShip? = null
   private var ugsValue: Long? = null
   private var eusValue: Double? = null
@@ -183,17 +185,19 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   }
 
   override fun onFavoriteClicked(station: Station?) {
-    if (station?.isFavorite == true) {
-      station.let {
-        stationsAdapter.getItem(station.pos)?.isFavorite = false
-        stationsAdapter.notifyItemChanged(station.pos)
-      }
-    } else {
-      station?.let {
-        stationsAdapter.getItem(it.pos)?.isFavorite = true
-        stationsAdapter.notifyItemChanged(station.pos)
-      }
-    }
+    //TODO
+//    if (station?.isFavorite == true) {
+//      viewModel.callDeleteFavStation(station)
+//      station.let {
+//        stationsAdapter.getItem(station.pos)?.isFavorite = false
+//        stationsAdapter.notifyItemChanged(station.pos)
+//      }
+//    } else {
+//      station?.let {
+//        stationsAdapter.getItem(it.pos)?.isFavorite = true
+//        stationsAdapter.notifyItemChanged(station.pos)
+//      }
+//    }
   }
 
   override fun onSaveInstanceState(outState: Bundle) {

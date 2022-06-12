@@ -4,10 +4,11 @@ import com.space.challenge.domain.model.ResultState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-abstract class FlowUseCase<T> {
 
-  suspend fun execute(): Flow<ResultState<T?>> {
-    val response = buildResponse()
+abstract class FlowWithParamUseCase<S, T> {
+
+  suspend fun execute(param: S): Flow<ResultState<T?>> {
+    val response = buildResponse(param)
     return try {
       flow<ResultState<T?>> {
         emit(ResultState.Success(response))
@@ -19,5 +20,5 @@ abstract class FlowUseCase<T> {
     }
   }
 
-  abstract suspend fun buildResponse(): T?
+  abstract suspend fun buildResponse(param: S): T?
 }

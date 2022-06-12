@@ -16,6 +16,23 @@ buildscript {
   }
 }
 
+subprojects {
+  configurations.all {
+    resolutionStrategy.eachDependency {
+      val requested = requested
+      if (requested.group == "org.jetbrains.kotlin" &&
+        (requested.name == "kotlin-stdlib-jdk8" ||
+          requested.name == "kotlin-stdlib-jdk7" ||
+          requested.name == "kotlin-reflect" ||
+          requested.name == "kotlin-stdlib" ||
+          requested.name == "kotlin-stdlib-common")
+      ) {
+        useVersion("1.5.30")
+      }
+    }
+  }
+}
+
 tasks.register("clean", Delete::class) {
   delete(rootProject.buildDir)
 }

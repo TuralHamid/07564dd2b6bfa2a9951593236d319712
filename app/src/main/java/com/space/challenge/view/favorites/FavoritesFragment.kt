@@ -33,18 +33,6 @@ class FavoritesFragment : BaseFragment(), FavoritesAdapter.FavoriteStationClickL
       it.rcvFavorites.adapter = favoritesAdapter
     }
 
-
-    currentStationList = listOf(
-      //TODO dummy data
-      Station("Mars", 2.0, 3.0, 2000, 800, 100).apply {
-        isFavorite = true
-      },
-      Station("Mercury", 2.0, 3.0, 1500, 900, 100),
-      Station("Saturn", 2.0, 3.0, 900, 300, 100).apply {
-        isFavorite = true
-      }
-    )
-
     favoritesAdapter.setItems(checkFavEmpty().toMutableList())
   }
 

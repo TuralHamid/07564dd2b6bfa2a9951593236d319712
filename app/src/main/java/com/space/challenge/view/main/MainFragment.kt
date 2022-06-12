@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentMainBinding
-import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
 import com.space.challenge.utils.filterNotWorldStations
@@ -37,20 +36,9 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     setListeners()
     setViewParameters()
     setObservers()
-    viewModel.callGetStations()
   }
 
   private fun setObservers() {
-    viewModel.stationsState.observe(viewLifecycleOwner) {
-      when (it) {
-        is ResultState.Error -> {
-          Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
-        }
-        is ResultState.Success<List<Station?>?> -> {
-          stationResponse = it.data
-        }
-      }
-    }
   }
 
   private fun setViewParameters() {

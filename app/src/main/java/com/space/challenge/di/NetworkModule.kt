@@ -23,10 +23,6 @@ object NetworkModule {
 
   @Provides
   @Singleton
-  fun provideStationService(services: Services): StationsService = StationsServiceImpl(services)
-
-  @Provides
-  @Singleton
   fun serviceCreator(
     @Named("api_url") apiUrl: String,
     defaultHeaderInterceptor: DefaultHeaderInterceptor,
@@ -35,4 +31,8 @@ object NetworkModule {
 
   @Provides
   fun provideServices(serviceCreator: ServiceCreator): Services = serviceCreator.createService(Services::class.java)
+
+  @Provides
+  @Singleton
+  fun provideStationService(services: Services): StationsService = StationsServiceImpl(services)
 }
