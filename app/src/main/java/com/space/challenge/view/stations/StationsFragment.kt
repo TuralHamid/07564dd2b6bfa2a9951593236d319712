@@ -27,7 +27,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   private var binding: FragmentStationsBinding? = null
   private lateinit var stationsAdapter: StationsAdapter
   private lateinit var layoutManager: LinearLayoutManager
-  private var currentStationList: List<Station> = listOf()
+  private var currentStationList: List<Station>? = listOf()
   private var spaceShip: SpaceShip? = null
   private var ugsValue: Long? = null
   private var eusValue: Double? = null
@@ -41,6 +41,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     super.onCreate(savedInstanceState)
     spaceShip = savedInstanceState?.getParcelable(STATE_SPACE_SHIP)
       ?: arguments?.getParcelable(ARG_SPACE_SHIP)
+    currentStationList = arguments?.getParcelableArrayList(ARG_STATIONS)
     setFeatureValues()
     startTimerThread()
   }
@@ -98,15 +99,15 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
 
   private fun searchStations(s: String?) {
     if (!s.isNullOrEmpty()) {
-      val filteredList = currentStationList.filterSearchedStations(s)
-      if (filteredList.isNotEmpty()) {
+      val filteredList = currentStationList?.filterSearchedStations(s)
+      if (filteredList?.isNotEmpty() == true) {
         binding?.tvStationEmpty?.hideView()
       } else {
         binding?.tvStationEmpty?.showView()
       }
-      stationsAdapter.setItems(filteredList.toMutableList())
+      stationsAdapter.setItems(filteredList?.toMutableList())
     } else {
-      stationsAdapter.setItems(currentStationList.toMutableList())
+      stationsAdapter.setItems(currentStationList?.toMutableList())
     }
   }
 
@@ -126,14 +127,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
       it.rcvStations.adapter = stationsAdapter
     }
     layoutManager = binding?.rcvStations?.layoutManager as LinearLayoutManager
-
-    currentStationList = listOf(
-      //TODO dummy data
-      Station("Mars", 2.0, 3.0, 2000, 800, 100),
-      Station("Mercury", 2.0, 3.0, 1500, 900, 100),
-      Station("Saturn", 2.0, 3.0, 900, 300, 100)
-    )
-    stationsAdapter.setItems(currentStationList.toMutableList())
+    stationsAdapter.setItems(currentStationList?.toMutableList())
   }
 
   private fun startTimerThread() {
@@ -165,7 +159,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
 
   private fun getStationsDistanceSum(): Double {
     var distSum = 0.0
-    currentStationList.forEach {
+    currentStationList?.forEach {
       it.coordinateX?.let { x ->
         it.coordinateY?.let { y ->
           if (it.capacity == it.stock) {
@@ -229,5 +223,6 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     private const val DAMAGE_SUBTRACT_VALUE: Int = 10
     val ARG_SPACE_SHIP = "arg:spaceShip.${this::class.java.canonicalName}"
     private val STATE_SPACE_SHIP = "state:spaceShip.${this::class.java.canonicalName}"
+    val ARG_STATIONS = "arg:stations.${this::class.java.canonicalName}"
   }
 }

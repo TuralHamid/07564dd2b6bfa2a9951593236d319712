@@ -16,10 +16,9 @@ class MainViewModel @Inject constructor(
   private val stationsUseCase: StationsUseCase
 ) : ViewModel() {
 
-  val stationsState = MutableLiveData<ResultState<List<Station?>>>()
+  val stationsState = MutableLiveData<ResultState<List<Station?>?>>()
 
   fun callGetStations() {
-    stationsState.value = ResultState.Loading
     viewModelScope.launch {
       stationsUseCase.execute().collect {
         stationsState.value = it

@@ -18,12 +18,14 @@ import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
+import com.space.challenge.view.stations.StationsFragment.Companion.ARG_STATIONS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
   private val viewModel by viewModels<MainViewModel>()
+  private var stationResponse: List<Station?>? = listOf()
   private var name: String? = null
   private var durability: Int = 0
   private var speed: Int = 0
@@ -43,9 +45,8 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
         is ResultState.Error -> {
           Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
         }
-        is ResultState.Success<List<Station?>> -> {
-          val stationResponse = it.data
-          //TODO update UI
+        is ResultState.Success<List<Station?>?> -> {
+          stationResponse = it.data
         }
       }
     }
@@ -62,7 +63,10 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
       if (isInputValid()) {
         navController.navigate(
           R.id.act_btnContinue_to_bnvNavigation,
-          bundleOf(ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity))
+          bundleOf(
+            ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity),
+            ARG_STATIONS to stationResponse
+          )
         )
       }
     }
