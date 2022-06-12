@@ -1,6 +1,5 @@
 package com.space.challenge.domain.repository
 
-import com.space.challenge.domain.model.FavoriteStation
 import com.space.challenge.domain.model.Station
 
 interface MainRepository {
@@ -9,6 +8,4 @@ interface MainRepository {
   suspend fun callInsertAllStation(stations: List<Station>)
 
   suspend fun callDeleteAllStation(stations: List<Station>)
-
-  suspend fun callDeleteAllFavStation(favoriteStations: List<FavoriteStation>)
 }

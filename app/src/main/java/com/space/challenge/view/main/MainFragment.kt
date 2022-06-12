@@ -13,18 +13,17 @@ import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentMainBinding
+import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
-import com.space.challenge.utils.filterNotWorldStations
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
-import com.space.challenge.view.stations.StationsFragment.Companion.ARG_STATIONS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
   private var binding: FragmentMainBinding? = null
-  private val viewModel by viewModels<MainViewModel>()
+  private val viewModel: MainViewModel by viewModels()
   private var stationResponse: List<Station?>? = listOf()
   private var name: String? = null
   private var durability: Int = 0
@@ -36,9 +35,22 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
     setListeners()
     setViewParameters()
     setObservers()
+    viewModel.callGetStations()
   }
 
   private fun setObservers() {
+    viewModel.stationsState.observe(viewLifecycleOwner) {
+      when (it) {
+        is ResultState.Error -> {
+          Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
+        }
+        is ResultState.Success<List<Station?>?> -> {
+          stationResponse = it.data
+          viewModel.callDeleteStations(listOf())
+          viewModel.callInsertAllStations(stationResponse as List<Station>)
+        }
+      }
+    }
   }
 
   private fun setViewParameters() {
@@ -53,8 +65,7 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
         navController.navigate(
           R.id.act_btnContinue_to_bnvNavigation,
           bundleOf(
-            ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity),
-            ARG_STATIONS to stationResponse?.filterNotWorldStations(getString(R.string.stations_tv_initial_station_text))
+            ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity)
           )
         )
       }

@@ -2,13 +2,12 @@ package com.space.challenge.di
 
 import android.content.Context
 import androidx.room.Room
-import com.space.challenge.cache.db.FavStationDao
 import com.space.challenge.cache.db.SpaceAppDB
 import com.space.challenge.cache.db.StationDao
-import com.space.challenge.cache.db.impl.FavStationsCacheImpl
 import com.space.challenge.cache.db.impl.StationCacheImpl
-import com.space.challenge.data.cache.FavoritesCache
+import com.space.challenge.data.cache.PreferenceHelper
 import com.space.challenge.data.cache.StationCache
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,11 +31,8 @@ object CacheModule {
   fun provideStationDao(spaceAppDB: SpaceAppDB): StationDao = spaceAppDB.stationDao()
 
   @Provides
-  fun provideFavStationDao(spaceAppDB: SpaceAppDB): FavStationDao = spaceAppDB.favStationDao()
-
-  @Provides
-  fun provideStationCache(stationDao: StationDao): StationCache = StationCacheImpl(stationDao)
-
-  @Provides
-  fun provideFavoriteCache(favStationDao: FavStationDao): FavoritesCache = FavStationsCacheImpl(favStationDao)
+  fun provideStationCache(
+    preferenceHelper: PreferenceHelper,
+    moshi: Moshi
+  ): StationCache = StationCacheImpl(preferenceHelper, moshi)
 }

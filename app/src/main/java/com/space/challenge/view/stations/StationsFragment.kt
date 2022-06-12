@@ -7,17 +7,17 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.space.challenge.R
 import com.space.challenge.databinding.FragmentStationsBinding
+import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
-import com.space.challenge.utils.filterSearchedStations
-import com.space.challenge.utils.hideView
-import com.space.challenge.utils.showView
+import com.space.challenge.utils.*
 import com.space.challenge.view.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.pow
@@ -29,7 +29,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   private lateinit var stationsAdapter: StationsAdapter
   private lateinit var layoutManager: LinearLayoutManager
   private var currentStationList: List<Station>? = listOf()
-  private val viewModel by viewModels<StationsViewModel>()
+  private val viewModel: StationsViewModel by viewModels()
   private var spaceShip: SpaceShip? = null
   private var ugsValue: Long? = null
   private var eusValue: Double? = null
@@ -43,7 +43,6 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     super.onCreate(savedInstanceState)
     spaceShip = savedInstanceState?.getParcelable(STATE_SPACE_SHIP)
       ?: arguments?.getParcelable(ARG_SPACE_SHIP)
-    currentStationList = arguments?.getParcelableArrayList(ARG_STATIONS)
     setFeatureValues()
     startTimerThread()
   }
@@ -58,7 +57,9 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     super.onViewCreated(view, savedInstanceState)
     setListeners()
     setViewParameters()
+    setObservers()
     initAdapter()
+    viewModel.callGetLocalStations()
   }
 
   private fun setListeners() {
@@ -121,6 +122,20 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     binding?.tvDamage?.text = damageValue.toString()
   }
 
+  private fun setObservers() {
+    viewModel.getLocalStationsState.observe(viewLifecycleOwner) {
+      when (it) {
+        is ResultState.Error -> {
+          Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
+        }
+        is ResultState.Success<List<Station?>?> -> {
+          currentStationList = it.data?.filterNotWorldStations(getString(R.string.stations_tv_initial_station_text)) as List<Station>?
+          stationsAdapter.setItems(currentStationList?.sortStationsByName()?.toMutableList())
+        }
+      }
+    }
+  }
+
   private fun initAdapter() {
     stationsAdapter = StationsAdapter(context, this)
     binding?.let {
@@ -129,7 +144,6 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
       it.rcvStations.adapter = stationsAdapter
     }
     layoutManager = binding?.rcvStations?.layoutManager as LinearLayoutManager
-    stationsAdapter.setItems(currentStationList?.toMutableList())
   }
 
   private fun startTimerThread() {
@@ -185,19 +199,22 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   }
 
   override fun onFavoriteClicked(station: Station?) {
-    //TODO
-//    if (station?.isFavorite == true) {
-//      viewModel.callDeleteFavStation(station)
-//      station.let {
-//        stationsAdapter.getItem(station.pos)?.isFavorite = false
-//        stationsAdapter.notifyItemChanged(station.pos)
-//      }
-//    } else {
-//      station?.let {
-//        stationsAdapter.getItem(it.pos)?.isFavorite = true
-//        stationsAdapter.notifyItemChanged(station.pos)
-//      }
-//    }
+    if (station?.isFavorite == true) {
+      station.let {
+        stationsAdapter.getItem(station.pos)?.isFavorite = false
+        stationsAdapter.notifyItemChanged(station.pos)
+      }
+    } else {
+      station?.let {
+        stationsAdapter.getItem(it.pos)?.isFavorite = true
+        stationsAdapter.notifyItemChanged(station.pos)
+      }
+    }
+    station?.let {
+      stationsAdapter.getItem(station.pos)?.let {
+        viewModel.callUpdateStation(it)
+      }
+    }
   }
 
   override fun onSaveInstanceState(outState: Bundle) {
@@ -227,6 +244,5 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     private const val DAMAGE_SUBTRACT_VALUE: Int = 10
     val ARG_SPACE_SHIP = "arg:spaceShip.${this::class.java.canonicalName}"
     private val STATE_SPACE_SHIP = "state:spaceShip.${this::class.java.canonicalName}"
-    val ARG_STATIONS = "arg:stations.${this::class.java.canonicalName}"
   }
 }
