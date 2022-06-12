@@ -13,3 +13,9 @@ fun <T> List<T>.filterFavoriteStations(): List<T> {
     (item as Station).isFavorite
   }
 }
+
+fun <T> List<T>.filterNotWorldStations(worldName: String): List<T> {
+  return this.filterNot { item ->
+    (item as Station).name.equals(worldName)
+  }
+}

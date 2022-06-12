@@ -16,6 +16,7 @@ import com.space.challenge.databinding.FragmentMainBinding
 import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
+import com.space.challenge.utils.filterNotWorldStations
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_STATIONS
@@ -65,7 +66,7 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
           R.id.act_btnContinue_to_bnvNavigation,
           bundleOf(
             ARG_SPACE_SHIP to SpaceShip(name, durability, speed, capacity),
-            ARG_STATIONS to stationResponse
+            ARG_STATIONS to stationResponse?.filterNotWorldStations(getString(R.string.stations_tv_initial_station_text))
           )
         )
       }
