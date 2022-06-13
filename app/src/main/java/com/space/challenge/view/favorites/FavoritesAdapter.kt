@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.challenge.R
 import com.space.challenge.databinding.ItemFavoriteStationBinding
 import com.space.challenge.domain.model.Station
+import com.space.challenge.utils.getDistance
 import com.space.challenge.view.BaseAdapter
 
 class FavoritesAdapter(
@@ -22,6 +23,18 @@ class FavoritesAdapter(
     val item = getItem(position)
     item?.pos = position
     holder.binding.tvName.text = item?.name
+    holder.binding.tvCapacity.text = String.format(
+      "%s: %s", context?.getString(R.string.favorites_tv_item_station_capacity_text),
+      item?.capacity.toString()
+    )
+    item?.coordinateX?.let { x ->
+      item.coordinateY?.let { y ->
+        holder.binding.tvEus.text = String.format(
+          "%s: %.1f", context?.getString(R.string.favorites_tv_item_station_eus_text),
+          getDistance(x, y, 0.0, 0.0)
+        )
+      }
+    }
 
     holder.binding.imvFav.setOnClickListener {
       favoriteStationClickListener.onFavoriteClicked(item)

@@ -24,6 +24,7 @@ class StationsAdapter(
     context?.let {
       holder.binding.tvCoordinateXTitle.text = String.format(context.getString(R.string.stations_tv_item_station_coordinate_x_text), item?.coordinateX)
       holder.binding.tvCoordinateYTitle.text = String.format(context.getString(R.string.stations_tv_item_station_coordinate_y_text), item?.coordinateY)
+      holder.binding.tvEusTitle.text = String.format(context.getString(R.string.stations_tv_item_station_eus_text), "")
       holder.binding.tvCapacityTitle.text = String.format(context.getString(R.string.stations_tv_item_station_capacity_text), item?.capacity)
       holder.binding.tvStockTitle.text = String.format(context.getString(R.string.stations_tv_item_station_stock_text), item?.stock)
       holder.binding.tvNeedTitle.text = String.format(context.getString(R.string.stations_tv_item_station_need_text), item?.need)

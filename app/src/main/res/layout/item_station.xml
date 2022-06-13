@@ -23,50 +23,60 @@
       style="@style/TextAppearance.App.Large.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/stations_tv_item_station_coordinate_x_text"
       android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="@string/stations_tv_item_station_coordinate_x_text" />
 
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/tv_coordinate_y_title"
       style="@style/TextAppearance.App.Large.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/stations_tv_item_station_coordinate_y_text"
       android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_x_title" />
+      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_x_title"
+      tools:text="@string/stations_tv_item_station_coordinate_y_text" />
+
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_eus_title"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_y_title"
+      tools:text="@string/stations_tv_item_station_eus_text" />
 
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/tv_capacity_title"
       style="@style/TextAppearance.App.Large.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/stations_tv_item_station_capacity_text"
       android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_y_title" />
+      app:layout_constraintTop_toBottomOf="@+id/tv_eus_title"
+      tools:text="@string/stations_tv_item_station_capacity_text" />
 
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/tv_stock_title"
       style="@style/TextAppearance.App.Large.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/stations_tv_item_station_stock_text"
       android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_capacity_title" />
+      app:layout_constraintTop_toBottomOf="@+id/tv_capacity_title"
+      tools:text="@string/stations_tv_item_station_stock_text" />
 
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/tv_need_title"
       style="@style/TextAppearance.App.Large.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/stations_tv_item_station_need_text"
       android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_stock_title" />
+      app:layout_constraintTop_toBottomOf="@+id/tv_stock_title"
+      tools:text="@string/stations_tv_item_station_need_text" />
 
     <com.google.android.material.imageview.ShapeableImageView
       android:id="@+id/imv_fav"

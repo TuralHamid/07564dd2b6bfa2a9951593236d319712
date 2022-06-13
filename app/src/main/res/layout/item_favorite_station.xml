@@ -40,12 +40,24 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_name"
       tools:text="EUS" />
 
+    <com.google.android.material.textview.MaterialTextView
+      android:id="@+id/tv_capacity"
+      style="@style/TextAppearance.App.Large.Bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toStartOf="@+id/imv_fav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_eus"
+      tools:text="Capacity" />
+
     <com.google.android.material.imageview.ShapeableImageView
       android:id="@+id/imv_fav"
       android:layout_width="30dp"
       android:layout_height="30dp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/tv_eus"
+      app:layout_constraintStart_toEndOf="@+id/tv_capacity"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/ic_favorites_empty" />
 

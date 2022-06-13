@@ -20,8 +20,6 @@ import com.space.challenge.model.SpaceShip
 import com.space.challenge.utils.*
 import com.space.challenge.view.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 @AndroidEntryPoint
 class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
@@ -195,7 +193,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
           it.coordinateY?.let { coordinateY ->
             ugsValue?.let { ugs ->
               eusValue?.let { eus ->
-                val distance = getDistance(coordinateX, coordinateY)
+                val distance = getDistance(coordinateX, coordinateY, currentXCoordinate, currentYCoordinate)
                 if (ugs >= need && eus >= distance) {
                   ugsValue = ugsValue?.minus(need)
                   eusValue = eusValue?.minus(distance)
@@ -235,16 +233,12 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
       it.coordinateX?.let { x ->
         it.coordinateY?.let { y ->
           if (it.capacity == it.stock) {
-            distSum += getDistance(x, y)
+            distSum += getDistance(x, y, currentXCoordinate, currentYCoordinate)
           }
         }
       }
     }
     return distSum
-  }
-
-  private fun getDistance(x: Double, y: Double): Double {
-    return sqrt(((x.minus(currentXCoordinate)).pow(2).plus((y.minus(currentYCoordinate)).pow(2))))
   }
 
   override fun onFavoriteClicked(station: Station?) {
