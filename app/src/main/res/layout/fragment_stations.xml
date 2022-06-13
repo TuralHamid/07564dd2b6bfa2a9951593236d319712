@@ -230,4 +230,27 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/rcv_stations" />
 
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/tv_completed"
+    style="@style/TextAppearance.App.XXLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/stations_tv_task_completed_text"
+    android:textColor="@color/black"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_current_station"
+    tools:visibility="visible" />
+
+  <com.google.android.material.imageview.ShapeableImageView
+    android:id="@+id/imv_play_again"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_completed"
+    app:srcCompat="@drawable/ic_refresh" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

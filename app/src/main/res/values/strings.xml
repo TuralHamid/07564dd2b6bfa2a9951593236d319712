@@ -22,7 +22,9 @@
   <string name="stations_tv_item_station_stock_text">Mevcut: %s</string>
   <string name="stations_tv_item_station_need_text">Gereken: %s</string>
   <string name="stations_tv_initial_station_text">Dünya</string>
+  <string name="stations_tv_task_completed_text">Teslimat sonlandı</string>
   <string name="stations_tv_empty_stations_text">Bu kriterde istasyon mevcut değil</string>
+  <string name="stations_tv_irrelevant_station_text">Bu istasyon kriterlerine uygun değil</string>
 
   <string name="favorites_bnv_title_text">Favoriler</string>
   <string name="favorites_tv_page_title_text">Favoriler</string>

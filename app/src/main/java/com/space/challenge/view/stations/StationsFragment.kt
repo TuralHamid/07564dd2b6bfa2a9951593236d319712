@@ -82,6 +82,10 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
       }
     }
 
+    binding?.imvPlayAgain?.setOnClickListener {
+      getMainActivity()?.onBackPressed()
+    }
+
     binding?.edtSearch?.addTextChangedListener(object : TextWatcher {
       override fun afterTextChanged(s: Editable) {}
 
@@ -117,9 +121,11 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
   private fun setViewParameters() {
     binding?.tvName?.text = spaceShip?.name
     binding?.tvUgsValue?.text = ugsValue.toString()
-    binding?.tvEusValue?.text = eusValue.toString()
+    binding?.tvEusValue?.text = String.format("%.1f", eusValue)
     binding?.tvDsValue?.text = dsValue.toString()
     binding?.tvDamage?.text = damageValue.toString()
+    if (isDeliveryCompleted()) binding?.tvCompleted?.showView() else binding?.tvCompleted?.hideView()
+    if (isDeliveryCompleted()) binding?.imvPlayAgain?.showView() else binding?.imvPlayAgain?.hideView()
   }
 
   private fun setObservers() {
@@ -165,8 +171,58 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
     timer?.start()
   }
 
-  private fun calculateTravel(station: Station?) {
+  override fun onTravelClicked(station: Station?) {
+    calculateTravel(station)
+    if (isDeliveryCompleted()) {
+      binding?.tvCurrentStation?.text = getString(R.string.stations_tv_initial_station_text)
+      binding?.tvCompleted?.showView()
+      binding?.imvPlayAgain?.showView()
+      timer?.cancel()
+      stationsAdapter.getItems()?.forEach {
+        it?.let { station ->
+          it.isTraveled = true
+          stationsAdapter.notifyItemChanged(it.pos)
+          viewModel.callUpdateStation(station)
+        }
+      }
+    }
+  }
 
+  private fun calculateTravel(station: Station?) {
+    station?.let {
+      it.need?.let { need ->
+        it.coordinateX?.let { coordinateX ->
+          it.coordinateY?.let { coordinateY ->
+            ugsValue?.let { ugs ->
+              eusValue?.let { eus ->
+                val distance = getDistance(coordinateX, coordinateY)
+                if (ugs >= need && eus >= distance) {
+                  ugsValue = ugsValue?.minus(need)
+                  eusValue = eusValue?.minus(distance)
+                  currentXCoordinate = coordinateX
+                  currentYCoordinate = coordinateY
+
+                  stationsAdapter.getItem(it.pos)?.stock = station.capacity
+                  stationsAdapter.getItem(it.pos)?.need = 0
+                  stationsAdapter.getItem(it.pos)?.isTraveled = true
+                  stationsAdapter.notifyItemChanged(it.pos)
+
+                  stationsAdapter.getItem(it.pos)?.let { st ->
+                    viewModel.callUpdateStation(st)
+                  }
+
+                  binding?.tvCurrentStation?.text = it.name
+                  binding?.tvUgsValue?.text = ugsValue.toString()
+                  binding?.tvEusValue?.text = String.format("%.1f", eusValue)
+                } else {
+                  Toast.makeText(context, R.string.stations_tv_irrelevant_station_text, Toast.LENGTH_SHORT).show()
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   private fun isDeliveryCompleted(): Boolean {
@@ -189,13 +245,6 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
 
   private fun getDistance(x: Double, y: Double): Double {
     return sqrt(((x.minus(currentXCoordinate)).pow(2).plus((y.minus(currentYCoordinate)).pow(2))))
-  }
-
-  override fun onTravelClicked(station: Station?) {
-    calculateTravel(station)
-    if (isDeliveryCompleted()) {
-      binding?.tvCurrentStation?.text = getString(R.string.stations_tv_initial_station_text)
-    }
   }
 
   override fun onFavoriteClicked(station: Station?) {

@@ -23,5 +23,8 @@ data class Station(
   var isFavorite: Boolean = false
 
   @IgnoredOnParcel
+  var isTraveled: Boolean = false
+
+  @IgnoredOnParcel
   var pos: Int = -1
 }

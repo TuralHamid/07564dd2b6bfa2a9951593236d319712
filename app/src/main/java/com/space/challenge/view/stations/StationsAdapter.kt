@@ -43,6 +43,16 @@ class StationsAdapter(
     } else {
       holder.binding.imvFav.setImageResource(R.drawable.ic_favorites_empty)
     }
+
+    if (item?.isTraveled == true) {
+      holder.binding.imvFav.isEnabled = false
+      holder.binding.btnTravel.isEnabled = false
+      holder.binding.root.alpha = 0.6F
+    } else {
+      holder.binding.imvFav.isEnabled = true
+      holder.binding.btnTravel.isEnabled = true
+      holder.binding.root.alpha = 1.0F
+    }
   }
 
   interface StationClickListener {
