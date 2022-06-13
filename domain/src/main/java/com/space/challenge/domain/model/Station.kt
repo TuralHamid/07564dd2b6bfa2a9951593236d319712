@@ -26,5 +26,8 @@ data class Station(
   var isTraveled: Boolean = false
 
   @IgnoredOnParcel
+  var eus: Double = 0.0
+
+  @IgnoredOnParcel
   var pos: Int = -1
 }

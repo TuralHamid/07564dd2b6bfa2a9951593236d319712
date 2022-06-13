@@ -171,6 +171,7 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
 
   override fun onTravelClicked(station: Station?) {
     calculateTravel(station)
+    updateUesValues()
     if (isDeliveryCompleted()) {
       binding?.tvCurrentStation?.text = getString(R.string.stations_tv_initial_station_text)
       binding?.tvCompleted?.showView()
@@ -217,6 +218,20 @@ class StationsFragment : BaseFragment(), StationsAdapter.StationClickListener {
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  private fun updateUesValues() {
+    stationsAdapter.getItems()?.forEach {
+      it?.let { station ->
+        station.coordinateX?.let { x ->
+          station.coordinateY?.let { y ->
+            it.eus = getDistance(x, y, currentXCoordinate, currentYCoordinate)
+            stationsAdapter.notifyItemChanged(it.pos)
+            viewModel.callUpdateStation(station)
           }
         }
       }

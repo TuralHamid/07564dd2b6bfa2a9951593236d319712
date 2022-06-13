@@ -16,6 +16,7 @@ import com.space.challenge.databinding.FragmentMainBinding
 import com.space.challenge.domain.model.ResultState
 import com.space.challenge.domain.model.Station
 import com.space.challenge.model.SpaceShip
+import com.space.challenge.utils.getDistance
 import com.space.challenge.view.BaseFragment
 import com.space.challenge.view.stations.StationsFragment.Companion.ARG_SPACE_SHIP
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +48,13 @@ class MainFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
         is ResultState.Success<List<Station?>?> -> {
           stationResponse = it.data
           viewModel.callDeleteStations(listOf())
+          stationResponse?.forEach { station ->
+            station?.coordinateX?.let { x ->
+              station.coordinateY?.let { y ->
+                station.eus = getDistance(x, y, 0.0, 0.0)
+              }
+            }
+          }
           viewModel.callInsertAllStations(stationResponse as List<Station>)
         }
       }
